@@ -1,0 +1,49 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmitCommentForm()"
+  class="col-lg-6 col-10 mx-auto bg-light py-4 px-5 rounded shadow"
+>
+  <h2 class="mb-3">Votre commentaire</h2>
+  <div class="form-group">
+    <label for="author">Votre username</label>
+    <input
+      id="author"
+      class="form-control"
+      formControlName="author"
+      [(ngModel)]="comment.author"
+    />
+    <app-errors-form
+      [group]="form"
+      controlName="author"
+      controlLabel="Votre username"
+    ></app-errors-form>
+  </div>
+
+  <div class="form-group">
+    <label for="content">Votre commentaire</label>
+    <input
+      id="content"
+      class="form-control"
+      formControlName="content"
+      [(ngModel)]="comment.content"
+    />
+    <app-errors-form
+      [group]="form"
+      controlName="content"
+      controlLabel="Votre commentaire"
+    ></app-errors-form>
+  </div>
+
+  <div class="row col-4 mx-auto">
+    <button
+      type="submit"
+      class="btn btn-dark btn-lg mt-3"
+      [disabled]="form.invalid"
+    >
+      ENREGISTRER
+    </button>
+    <button [routerLink]="['/series', id]" class="btn btn-dark mt-2">
+      RETOUR
+    </button>
+  </div>
+</form>

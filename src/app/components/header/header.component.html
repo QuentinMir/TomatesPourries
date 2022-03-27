@@ -1,0 +1,20 @@
+<div
+  class="position-relative px-4 py-4 my-5 text-center shadow header-bg rounded"
+>
+  <h1 class="display-5 fw-bold">Tomates Pourries</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="h5 my-4">
+      Tomates Pourries is the most trusted measurement of quality for the series
+      in the whole hexagon. <span class="h1">🍅</span>
+    </p>
+  </div>
+  <div *ngIf="isConnected" class="position-absolute top-100 end-0 mt-2">
+    <button [routerLink]="['/series', 'new']" class="btn btn-success mx-2">
+      Ajouter
+    </button>
+
+    <button (click)="onClickSignOut()" class="btn btn-dark mx-2">
+      Me déconnecter
+    </button>
+  </div>
+</div>

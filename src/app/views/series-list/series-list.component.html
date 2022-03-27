@@ -1,0 +1,39 @@
+<div class="mt-3 pt-2 pb-5">
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Date de sortie de la 1ere saison</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let serie of series; index as i">
+        <th scope="row">{{ serie.id }}</th>
+        <td>{{ serie.name }}</td>
+        <td>{{ serie.releaseDate.toLocaleDateString(locales, options) }}</td>
+        <td>
+          <button
+            [routerLink]="['/series', serie.id]"
+            class="btn btn-outline-primary mx-2"
+          >
+            Détails
+          </button>
+          <button
+            [routerLink]="['/series', 'edit', serie.id]"
+            class="btn btn-outline-warning mx-2"
+          >
+            Éditer
+          </button>
+          <button
+            (click)="onClickDeleteSerie(i)"
+            class="btn btn-outline-danger mx-2"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

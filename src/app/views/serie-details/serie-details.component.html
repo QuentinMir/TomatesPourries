@@ -1,0 +1,60 @@
+<div class="row col-lg-8 col-12 my-3 pt-4 pb-2 card shadow mx-auto">
+  <div class="card-body text-center">
+    <div class="d-flex justify-content-around">
+      <h4 class="card-title my-3">{{ serie.id }} - {{ serie.name }}</h4>
+      <button routerLink="/series" class="btn btn-dark mt-2 mb-4">
+        ← RETOUR
+      </button>
+    </div>
+
+    <img src="{{ serie.photo }}" class="card-img-top mt-3" />
+    <h5 class="fw-light">
+      Date de sortie de la 1ère saison :
+      {{ serie.releaseDate.toLocaleDateString(locales, options) }} | Nombre de
+      saisons : {{ serie.numberOfSeasons }}
+    </h5>
+    <h4 class="mx-4 mt-3 fs-sm">- Description -</h4>
+    <h6 class="my-4">{{ serie.description }}</h6>
+    <h4 class="mx-4 fs-sm">- Critique -</h4>
+    <p>{{ serie.review }}</p>
+
+    <div class="d-flex justify-content-center align-items-center mt-5 mb-3">
+      <h4 class="mx-4 fs-sm">Commentaires</h4>
+      <button
+        [routerLink]="['/series', 'comment', serie.id]"
+        class="btn btn-outline-danger mx-4"
+      >
+        AJOUTER UN COMMENTAIRE
+      </button>
+    </div>
+    <!-- If there are comments then display the comment table -->
+    <table *ngIf="serie.comments.length > 0" class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Date</th>
+          <th scope="col">Auteur</th>
+          <th scope="col">Commentaires</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let comment of serie.comments">
+          <td scope="row">{{ comment.id }}</td>
+          <td>{{ comment.date.toLocaleDateString(locales) }}</td>
+          <td>{{ comment.author }}</td>
+          <td>{{ comment.content }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- If no comments then display this message -->
+    <div *ngIf="serie.comments.length === 0" class="text-center">
+      <h6 class="py-3 px-3 border">
+        Il n'y a pas de commentaires pour le moment...
+      </h6>
+    </div>
+    <button routerLink="/series" class="btn btn-dark mt-3 mb-4">
+      ← RETOUR
+    </button>
+  </div>
+</div>

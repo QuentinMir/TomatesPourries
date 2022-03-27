@@ -1,0 +1,14 @@
+<div *ngIf="serie" class="row col-lg-6 col-12 card shadow mx-auto">
+  <div class="card-body text-center">
+    <h5 class="card-title">ÉDITER SÉRIE</h5>
+
+    <app-serie-form
+      [serieToEdit]="serie"
+      (formSubmitted)="onSubmitEditSerie($event)"
+      buttonLabel="ENREGISTRER"
+    >
+    </app-serie-form>
+
+    <button routerLink="/series" class="btn btn-dark mt-2">RETOUR</button>
+  </div>
+</div>

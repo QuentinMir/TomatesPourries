@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Audiowide&display=swap");
+
+.header-bg {
+  background-color: white;
+}
+
+h1 {
+  font-family: "Audiowide", cursive;
+}

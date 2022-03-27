@@ -1,0 +1,101 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmitSerieForm()"
+  class="bg-light px-3 py-3"
+>
+  <div class="form-group">
+    <label for="name">Nom de la série</label>
+    <input
+      id="name"
+      class="form-control"
+      formControlName="name"
+      [(ngModel)]="serie.name"
+    />
+    <app-errors-form
+      [group]="form"
+      controlName="name"
+      controlLabel="Nom de la série"
+    ></app-errors-form>
+  </div>
+
+  <div class="form-group">
+    <label for="releaseDate">Date de sortie de la saison 1</label>
+    <input
+      id="releaseDate"
+      type="date"
+      class="form-control"
+      formControlName="releaseDate"
+      (ngModelChange)="onChangeDateRelease($event)"
+      [ngModel]="serie.releaseDate | date: 'yyyy-MM-dd'"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="numberOfSeasons">Nombre de saison</label>
+    <input
+      id="numberOfSeasons"
+      type="number"
+      class="form-control"
+      formControlName="numberOfSeasons"
+      [(ngModel)]="serie.numberOfSeasons"
+    />
+    <app-errors-form
+      [group]="form"
+      controlName="numberOfSeasons"
+      controlLabel="Nombre de saison de la série"
+    ></app-errors-form>
+  </div>
+  <div class="form-group">
+    <label for="description">Description de la série</label>
+    <textarea
+      id="description"
+      name="description"
+      rows="3"
+      class="form-control"
+      formControlName="description"
+      [(ngModel)]="serie.description"
+    ></textarea>
+    <app-errors-form
+      [group]="form"
+      controlName="description"
+      controlLabel="Description de la série"
+    ></app-errors-form>
+  </div>
+  <div class="form-group">
+    <label for="review">Critique</label>
+    <textarea
+      id="review"
+      name="review"
+      rows="3"
+      class="form-control"
+      formControlName="review"
+      [(ngModel)]="serie.review"
+    ></textarea>
+    <app-errors-form
+      [group]="form"
+      controlName="review"
+      controlLabel="Critique de la série"
+    ></app-errors-form>
+  </div>
+
+  <div class="form-group">
+    <label for="photo">Url de l'image</label>
+    <input
+      id="photo"
+      class="form-control"
+      formControlName="photo"
+      [(ngModel)]="serie.photo"
+    />
+    <app-errors-form
+      [group]="form"
+      controlName="photo"
+      controlLabel="Image de la série"
+    ></app-errors-form>
+  </div>
+
+  <div class="row col-4 mt-4 mx-auto">
+    <button type="submit" class="btn btn-dark btn-lg" [disabled]="form.invalid">
+      {{ buttonLabel }}
+    </button>
+  </div>
+</form>
